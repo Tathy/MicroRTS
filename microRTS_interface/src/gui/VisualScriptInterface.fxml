@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox fx:id="principal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="691.0" prefWidth="270.0" style="-fx-background-color: #202134;" stylesheets="@CSS/main-screen.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.VisualScriptInterfaceController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="691.0" prefWidth="270.0" style="-fx-background-color: #202134;">
+         <children>
+            <JFXTabPane side="RIGHT" style="-fx-background-color: #202134;" AnchorPane.bottomAnchor="106.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+               <tabs>
+                  <Tab text="Main">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="239.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Text fill="#ffffffd9" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Map">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="13.0" />
+                                       </font>
+                                    </Text>
+                                    <ComboBox id="scroll-cb" fx:id="cbMaps" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="Mapas" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" stylesheets="@CSS/main-screen.css">
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </ComboBox>
+                                    <Text fill="#ffffffd9" strokeType="OUTSIDE" strokeWidth="0.0" text="Select AI 1">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="13.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </Text>
+                                    <ComboBox id="scroll-cb" fx:id="cbAI1" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="Passive" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" stylesheets="@CSS/main-screen.css" />
+                                    <Text fill="#ffffffd9" strokeType="OUTSIDE" strokeWidth="0.0" text="Select AI 2">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="13.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </Text>
+                                    <ComboBox id="scroll-cb" fx:id="cbAI2" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="Passive" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" stylesheets="@CSS/main-screen.css" />
+                                    <Text fill="#ffffffd9" strokeType="OUTSIDE" strokeWidth="0.0" text="Scripts AI 1">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="13.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </Text>
+                                    <GridPane>
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="20.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <TextField fx:id="txtAI1_00" opacity="0.35" style="-fx-background-color: WHITE; -fx-background-radius: 15px;" text="0">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin></TextField>
+                                          <TextField fx:id="txtAI1_10" opacity="0.35" style="-fx-background-color: WHITE; -fx-background-radius: 15px;" text="0" GridPane.columnIndex="1">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField fx:id="txtAI1_01" opacity="0.35" style="-fx-background-color: WHITE; -fx-background-radius: 15px;" text="0" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField fx:id="txtAI1_11" opacity="0.35" style="-fx-background-color: WHITE; -fx-background-radius: 15px;" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField fx:id="txtAI1_02" opacity="0.35" style="-fx-background-color: WHITE; -fx-background-radius: 15px;" text="0" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField fx:id="txtAI1_12" opacity="0.35" style="-fx-background-color: WHITE; -fx-background-radius: 15px;" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                       </children>
+                                    </GridPane>
+                                    <Text fill="#ffffffd9" strokeType="OUTSIDE" strokeWidth="0.0" text="Scripts AI 2">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="13.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </Text>
+                                    <GridPane>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="20.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <TextField fx:id="txtAI2_00" opacity="0.35" style="-fx-background-color: WHITE; -fx-background-radius: 15px;" text="0">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField fx:id="txtAI2_10" opacity="0.35" style="-fx-background-color: WHITE; -fx-background-radius: 15px;" text="0" GridPane.columnIndex="1">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField fx:id="txtAI2_01" opacity="0.35" style="-fx-background-color: WHITE; -fx-background-radius: 15px;" text="0" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField fx:id="txtAI2_11" opacity="0.35" style="-fx-background-color: WHITE; -fx-background-radius: 15px;" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField fx:id="txtAI2_02" opacity="0.35" style="-fx-background-color: WHITE; -fx-background-radius: 15px;" text="0" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField fx:id="txtAI2_12" opacity="0.35" style="-fx-background-color: WHITE; -fx-background-radius: 15px;" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </VBox>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab id="menu-workers" text="Workers">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Slider fx:id="sldQuantWorkers" blockIncrement="1.0" layoutX="50.0" layoutY="54.0" max="7.0" min="1.0" showTickLabels="true" value="1.0" />
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Light">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#clickedBtnLight" text="LIGHT" />
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Heavy">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#clickedBtnHeavy" text="HEAVY" />
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Ranged">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#clickedBtnRanged" text="RANGED" />
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Barracks">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#clickedBtnBarrack" text="BARRACK" />
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+               </tabs>
+            </JFXTabPane>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="245.0" style="-fx-background-color: #202134;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="631.0">
+               <children>
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="246.0">
+                     <children>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clickBtnPlay" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: transparent;" textOverrun="CENTER_ELLIPSIS">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <graphic>
+                              <Text fill="#ffffffbf" strokeType="OUTSIDE" strokeWidth="0.0" text="  ▶ " textAlignment="CENTER" wrappingWidth="71.6962890625">
+                                 <font>
+                                    <Font size="45.0" />
+                                 </font>
+                              </Text>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clickBtnPause" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: transparent;" textOverrun="CENTER_ELLIPSIS">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <graphic>
+                              <Text fill="#ffffffbf" strokeType="OUTSIDE" strokeWidth="0.0" text="  ▌▌" textAlignment="CENTER" wrappingWidth="71.6962890625">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clickBtnRestart" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: transparent;" textOverrun="CENTER_ELLIPSIS">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <graphic>
+                              <Text fill="#ffffffbf" strokeType="OUTSIDE" strokeWidth="0.0" text="⟲" textAlignment="CENTER" translateY="-7.0" wrappingWidth="71.6962890625">
+                                 <font>
+                                    <Font size="47.0" />
+                                 </font>
+                              </Text>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="585.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#clickApply" style="-fx-background-color: #6e6e7b; -fx-background-radius: 50px;" text="Apply" textAlignment="CENTER" textFill="#ffffffbf" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="10.0">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>
