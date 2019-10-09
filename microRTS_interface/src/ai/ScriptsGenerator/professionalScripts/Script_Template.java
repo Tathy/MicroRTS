@@ -66,7 +66,7 @@ public class Script_Template extends AbstractionLayerAI {
     @Override
     public PlayerAction getAction(int player, GameState gs) throws Exception {
         PlayerAction pa = new PlayerAction();        
-        pa = runCode(pa,"train(Light,20,Left)", player, gs);        
+        pa = pa.merge(build(player, gs).getAction(player, gs));
               
         return pa;
     }
@@ -76,5 +76,26 @@ public class Script_Template extends AbstractionLayerAI {
         AI script = new ChromosomeAI(utt, commandsGP, "", code, usedCommands);
         return pa.merge(script.getAction(player, gs));
     }
+
+    public AI build(int player, GameState gs) {
+    	List<ICommand> commandsGP = new ArrayList<>();
+    	if(player == 0) {
+    		commandsGP.addAll(compiler.CompilerCode("build(Barrack,1)", utt));
+        	commandsGP.addAll(compiler.CompilerCode("harvest(1)", utt));
+        	commandsGP.addAll(compiler.CompilerCode("train(Light,20,EnemyDir)", utt));
+        	commandsGP.addAll(compiler.CompilerCode("attack(Light,closest,EnemyDir)", utt));
+    	} else {
+	    	commandsGP.addAll(compiler.CompilerCode("build(Barrack,1)", utt));
+	    	commandsGP.addAll(compiler.CompilerCode("harvest(1)", utt));
+	    	commandsGP.addAll(compiler.CompilerCode("train(Ranged,20,EnemyDir)", utt));
+	    	commandsGP.addAll(compiler.CompilerCode("attack(Ranged,closest,EnemyDir)", utt));
+    	}
+    	
+    	AI script = new ChromosomeAI(utt, commandsGP, "", "", usedCommands);
+    	
+    	
+    	return script;
+    }
+    
 
 }
