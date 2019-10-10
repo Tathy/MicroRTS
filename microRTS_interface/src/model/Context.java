@@ -21,8 +21,10 @@ public class Context {
 	//AIs
 	private String ai1 = "Passive";
 	private String ai2 = "Passive";
-	ArrayList<Integer> iScriptsAi1 = new ArrayList<>();
-    ArrayList<Integer> iScriptsAi2 = new ArrayList<>();
+	//ArrayList<Integer> iScriptsAi1 = new ArrayList<>();
+    //ArrayList<Integer> iScriptsAi2 = new ArrayList<>();
+	ArrayList<String> scriptsAi1 = new ArrayList<>();
+	ArrayList<String> scriptsAi2 = new ArrayList<>();
 	
 	
 	// TESTES
@@ -102,28 +104,28 @@ public class Context {
 			ai2 = s_ai2;
 	}
 	
-	public void addScriptAI1(int i) {
-		iScriptsAi1.add(i);
+	public void addScriptAI1(String i) {
+		scriptsAi1.add(i);
 	}
 	
 	public void clearScriptsAI1() {
-		iScriptsAi1.clear();
+		scriptsAi1.clear();
 	}
 	
-	public ArrayList<Integer> getScritpsAi1(){
-		return iScriptsAi1;
+	public ArrayList<String> getScritpsAi1(){
+		return scriptsAi1;
 	}
 	
-	public void addScriptAI2(int i) {
-		iScriptsAi2.add(i);
+	public void addScriptAI2(String i) {
+		scriptsAi2.add(i);
 	}
 	
 	public void clearScriptsAI2() {
-		iScriptsAi2.clear();
+		scriptsAi2.clear();
 	}
 	
-	public ArrayList<Integer> getScritpsAi2(){
-		return iScriptsAi2;
+	public ArrayList<String> getScritpsAi2(){
+		return scriptsAi2;
 	}
 	
 	// TESTES

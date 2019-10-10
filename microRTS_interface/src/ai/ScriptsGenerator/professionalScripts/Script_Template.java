@@ -14,6 +14,8 @@ import ai.abstraction.pathfinding.AStarPathFinding;
 import ai.abstraction.pathfinding.PathFinding;
 import ai.core.AI;
 import ai.core.ParameterSpecification;
+import model.Context;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -80,15 +82,21 @@ public class Script_Template extends AbstractionLayerAI {
     public AI build(int player, GameState gs) {
     	List<ICommand> commandsGP = new ArrayList<>();
     	if(player == 0) {
-    		commandsGP.addAll(compiler.CompilerCode("build(Barrack,1)", utt));
-        	commandsGP.addAll(compiler.CompilerCode("harvest(1)", utt));
-        	commandsGP.addAll(compiler.CompilerCode("train(Light,20,EnemyDir)", utt));
-        	commandsGP.addAll(compiler.CompilerCode("attack(Light,closest,EnemyDir)", utt));
+    		//commandsGP.addAll(compiler.CompilerCode("build(Barrack,1)", utt));
+        	//commandsGP.addAll(compiler.CompilerCode("harvest(1)", utt));
+        	//commandsGP.addAll(compiler.CompilerCode("train(Light,20,EnemyDir)", utt));
+        	//commandsGP.addAll(compiler.CompilerCode("attack(Light,closest,EnemyDir)", utt));
+    		for(int i = 0; i < (Context.getInstance().getScritpsAi1()).size(); i++ ) {
+    			commandsGP.addAll(compiler.CompilerCode( (Context.getInstance().getScritpsAi1()).get(i) , utt));
+    		}
     	} else {
-	    	commandsGP.addAll(compiler.CompilerCode("build(Barrack,1)", utt));
-	    	commandsGP.addAll(compiler.CompilerCode("harvest(1)", utt));
-	    	commandsGP.addAll(compiler.CompilerCode("train(Ranged,20,EnemyDir)", utt));
-	    	commandsGP.addAll(compiler.CompilerCode("attack(Ranged,closest,EnemyDir)", utt));
+	    	//commandsGP.addAll(compiler.CompilerCode("build(Barrack,1)", utt));
+	    	//commandsGP.addAll(compiler.CompilerCode("harvest(1)", utt));
+	    	//commandsGP.addAll(compiler.CompilerCode("train(Ranged,20,EnemyDir)", utt));
+	    	//commandsGP.addAll(compiler.CompilerCode("attack(Ranged,closest,EnemyDir)", utt));
+    		for(int i = 0; i < (Context.getInstance().getScritpsAi2()).size(); i++ ) {
+    			commandsGP.addAll(compiler.CompilerCode( (Context.getInstance().getScritpsAi2()).get(i) , utt));
+    		}
     	}
     	
     	AI script = new ChromosomeAI(utt, commandsGP, "", "", usedCommands);

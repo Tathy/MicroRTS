@@ -47,8 +47,8 @@ public class ScriptInterface {
         int PERIOD = 20; // Tempo para cada ação
         boolean gameover = false;
 
-        AI ai1 = new RandomBiasedAI(utt);
-        AI ai2 = new Script_Template(utt);
+        AI ai1 = new PassiveAI(utt);
+        AI ai2 = new PassiveAI(utt);
         //AI ai1 = new PassiveAI(utt); // VOLTAR este deve ser o estado inicial na interface
         //AI ai2 = new PassiveAI(utt);
              
@@ -79,7 +79,7 @@ public class ScriptInterface {
 	            		pauseGame();
 	        			ai1 = attAI(utt);
 	        			ai2 = attAI(utt);
-	        			System.out.println(ai1.toString());
+	        			//System.out.println(ai1.toString());
 	            	}
 	            	// Apply durante a simulação
 	            	if(Context.getInstance().isApplied()) {
@@ -226,25 +226,36 @@ public class ScriptInterface {
     }
     
     public static AI attAI(UnitTypeTable utt) {
-    	String a;
-    	ArrayList<Integer> iScriptsAi = new ArrayList<>(Context.getInstance().getScritpsAi1());
-    	a = Context.getInstance().getAI1();
-    	
-    	//System.out.println("Scripts aplicados 1:");
-    	//System.out.println(iScriptsAi);
+    	String a1, a2;
+    	a1 = Context.getInstance().getAI1();
 	
-    	if(a == "Passive")
+    	if(a1 == "Passive")
     		return new PassiveAI(utt);
-    	else if(a == "Worker Rush")
+    	else if(a1 == "Worker Rush")
     		return new WorkerRush(utt);
-    	else if(a == "Light Rush")
+    	else if(a1 == "Light Rush")
     		return new LightRush(utt);
-    	else if(a == "Ranged Rush")
+    	else if(a1 == "Ranged Rush")
     		return new RangedRush(utt);
-    	else if(a == "Heavy Rush")
+    	else if(a1 == "Heavy Rush")
     		return new HeavyRush(utt);
-    	else if(a == "A3N")
+    	else if(a1 == "Chromosome")
     		return new Script_Template(utt);	
+
+    	a2 = Context.getInstance().getAI2();
+	
+    	if(a2 == "Passive")
+    		return new PassiveAI(utt);
+    	else if(a2 == "Worker Rush")
+    		return new WorkerRush(utt);
+    	else if(a2 == "Light Rush")
+    		return new LightRush(utt);
+    	else if(a2 == "Ranged Rush")
+    		return new RangedRush(utt);
+    	else if(a2 == "Heavy Rush")
+    		return new HeavyRush(utt);
+    	else if(a2 == "Chromosome")
+    		return new Script_Template(utt);
     	
     	return new PassiveAI();
     }
