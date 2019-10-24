@@ -3,10 +3,14 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import ai.ScriptsGenerator.CommandInterfaces.ICommand;
 
 public class Context {
 	
-	private static Context uniqueInstance = new Context();
+	//private static Context uniqueInstance = new Context();
+	private static Context uniqueInstance;
 	
 	private Context() {}
 	
@@ -25,18 +29,16 @@ public class Context {
     //ArrayList<Integer> iScriptsAi2 = new ArrayList<>();
 	ArrayList<String> scriptsAi1 = new ArrayList<>();
 	ArrayList<String> scriptsAi2 = new ArrayList<>();
+	List<ICommand> commandsGP1 = new ArrayList<>();
+	List<ICommand> commandsGP2 = new ArrayList<>();
 	
+	//public static Context getInstance() {
+	//    return uniqueInstance;
+	//}
 	
-	// TESTES
-	private boolean clickMap = false;
-	private boolean clickWorker = false;
-	private boolean clickLight = false;
-	private boolean clickHeavy = false;
-	private boolean clickRanged = false;
-	private boolean clickBarrack = false;
-	
-	public static Context getInstance() {
-		return uniqueInstance;
+	synchronized public static Context getInstance() {
+	    if (uniqueInstance == null) uniqueInstance = new Context();
+	    return uniqueInstance;
 	}
 	
 	// Barra inferior
@@ -127,61 +129,14 @@ public class Context {
 	public ArrayList<String> getScritpsAi2(){
 		return scriptsAi2;
 	}
-	
-	// TESTES
-	
-	public void setClickMap(boolean op) {
-		clickMap = op;
-	}
-	
-	public boolean getClickMap() {
-		return clickMap;
-	}
-	
-	
-	public void setClickWorker(boolean op) {
-		clickWorker = op;
-	}
-	
-	public boolean getClickWorker() {
-		return clickWorker;
-	}
-	
-	
-	public void setClickLight(boolean op) {
-		clickLight = op;
-	}
-	
-	public boolean getClickLight() {
-		return clickLight;
-	}
-	
-	
-	public void setClickHeavy(boolean op) {
-		clickHeavy = op;
-	}
-	
-	public boolean getClickHeavy() {
-		return clickHeavy;
-	}
-	
-	
-	public void setClickRanged(boolean op) {
-		clickRanged = op;
-	}
-	
-	public boolean getClickRanged() {
-		return clickRanged;
-	}
-	
-	
-	public void setClickBarrack(boolean op) {
-		clickBarrack = op;
-	}
-	
-	public boolean getClickBarrack() {
-		return clickBarrack;
-	}
-	
 
+	public List<ICommand> getCommandsGP2() {
+		return commandsGP2;
+	}
+	
+	public List<ICommand> getCommandsGP1() {
+		return commandsGP1;
+	}
+
+	
 }

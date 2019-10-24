@@ -48,16 +48,12 @@ public class ScriptInterface {
         boolean gameover = false;
 
         AI ai1 = new PassiveAI(utt);
-        AI ai2 = new PassiveAI(utt);
-        //AI ai1 = new PassiveAI(utt); // VOLTAR este deve ser o estado inicial na interface
-        //AI ai2 = new PassiveAI(utt);
-             
+        AI ai2 = new PassiveAI(utt);             
         
         System.out.println("---------AI's---------");
         System.out.println("AI 1 = "+ai1.toString());
         System.out.println("AI 2 = "+ai2.toString()+"\n");        
         
-        //mÈtodo para fazer a troca dos players
         // CriaÁ„o da tela
         //JFrame tela = PhysicalGameStatePanel.newVisualizer(gs, 720, 720, false, PhysicalGameStatePanel.COLORSCHEME_BLACK);
         //JFrame tela = PhysicalGameStatePanel.newVisualizer(gs, 720, 720, false, PhysicalGameStatePanel.COLORSCHEME_WHITE);
@@ -77,37 +73,35 @@ public class ScriptInterface {
 	            	while(Context.getInstance().isPaused() && !Context.getInstance().isRestarted()) {
 	            		nextTimeToUpdate = System.currentTimeMillis() + PERIOD;
 	            		pauseGame();
-	        			ai1 = attAI(utt);
-	        			ai2 = attAI(utt);
+	        			ai1 = attAI(utt, 1);
+	        			ai2 = attAI(utt, 2);
 	        			//System.out.println(ai1.toString());
 	            	}
 	            	// Apply durante a simulaÁ„o
 	            	if(Context.getInstance().isApplied()) {
 	            		
-	            		ai1 = attAI(utt);
-	        			ai2 = attAI(utt);
+	            		ai1 = attAI(utt, 1);
+	        			ai2 = attAI(utt, 2);
 	            		Context.getInstance().setApply(false);
 	            		
 	            	}
-	            	
-	                /// Tathy
-	                teste();
 
+	            	//pega aÁıes
 	                startTime = System.currentTimeMillis();
-	                
 	                PlayerAction pa1 = ai1.getAction(0, gs);
-	                if( (System.currentTimeMillis() - startTime) >0){
-	                //System.out.println("Tempo de execuÁ„o P1="+(startTime = System.currentTimeMillis() - startTime));
-	                }
-	                //System.out.println("Action A1 ="+ pa1.toString());
-	                //System.out.println("Action A2 ="+ pa2.toString());
-	                
+
 	                startTime = System.currentTimeMillis();
 	                PlayerAction pa2 = ai2.getAction(1, gs);
 	                
-	                if( (System.currentTimeMillis() - startTime) >0){
+	                //if( (System.currentTimeMillis() - startTime) >0){
+	                //System.out.println("Tempo de execuÁ„o P1="+(startTime = System.currentTimeMillis() - startTime));
+	                //}
+	                //System.out.println("Action A1 ="+ pa1.toString());
+	                //System.out.println("Action A2 ="+ pa2.toString());
+	                
+	                //if( (System.currentTimeMillis() - startTime) >0){
 	                   //System.out.println("Tempo de execu√ß√£o P2="+(startTime = System.currentTimeMillis() - startTime));
-	                }
+	                //}
 	                
 	                gs.issueSafe(pa1);
 	                gs.issueSafe(pa2);
@@ -123,18 +117,7 @@ public class ScriptInterface {
 	                    e.printStackTrace();
 	                }
 	            }
-	           /* PhysicalGameState physical = gs.getPhysicalGameState();
-	            System.out.println("---------TIME---------");
-	            System.out.println(gs.getTime());
-	            for (Unit u : physical.getUnits()) {
-	                if (u.getPlayer() == 1) {
-	                    System.out.println("Player 1: Unity - " + u.toString());
-	                }
-	                else if (u.getPlayer() == 0) {
-	                     System.out.println("Player 0: Unity - " + u.toString());
-	                } 
-	            }
-	            */
+
 	        } while (!gameover && gs.getTime() < MAXCYCLES && !Context.getInstance().isRestarted());
 	        
 	        if(!Context.getInstance().isRestarted()) {
@@ -151,16 +134,13 @@ public class ScriptInterface {
 	        Context.getInstance().setPause(true);
 	        do {
 		        //Restart Game
-		        //utt = new UnitTypeTable();
 				pgs = PhysicalGameState.load(Context.getInstance().getMap(), utt);
-				//System.out.println("Restart");
-				//System.out.println(Context.getInstance().getMap());
 				gs = new GameState(pgs, utt);
 				gameover = gs.cycle();
 				pgsp = new PhysicalGameStatePanel(gs);
 				tela.recreate(983, 725, pgsp);
-				ai1 = attAI(utt);
-				ai2 = attAI(utt);
+				ai1 = attAI(utt, 1);
+				ai2 = attAI(utt, 2);
 				
 				Context.getInstance().setPlay(false);
 				Context.getInstance().setRestart(false);
@@ -176,10 +156,8 @@ public class ScriptInterface {
 					gameover = gs.cycle();
 					pgsp = new PhysicalGameStatePanel(gs);
 					tela.recreate(983, 725, pgsp);
-					//ai1 = new LightRush(utt, new BFSPathFinding());
-				    //ai2 = new HeavyRush(utt, new BFSPathFinding());
-					ai1 = attAI(utt);
-					ai2 = attAI(utt);
+					ai1 = attAI(utt, 1);
+					ai2 = attAI(utt, 2);
 					
 					Context.getInstance().setPlay(false);
 					Context.getInstance().setRestart(false);
@@ -216,7 +194,9 @@ public class ScriptInterface {
         return scriptsAI;
     }
     
-    ///Tathy
+    
+    
+    ///Tathy - pause
     public static void pauseGame() {
     	try {
 			Thread.sleep(1);
@@ -225,87 +205,43 @@ public class ScriptInterface {
 		}
     }
     
-    public static AI attAI(UnitTypeTable utt) {
-    	String a1, a2;
-    	a1 = Context.getInstance().getAI1();
-	
-    	if(a1 == "Passive")
-    		return new PassiveAI(utt);
-    	else if(a1 == "Worker Rush")
-    		return new WorkerRush(utt);
-    	else if(a1 == "Light Rush")
-    		return new LightRush(utt);
-    	else if(a1 == "Ranged Rush")
-    		return new RangedRush(utt);
-    	else if(a1 == "Heavy Rush")
-    		return new HeavyRush(utt);
-    	else if(a1 == "Chromosome")
-    		return new Script_Template(utt);	
-
-    	a2 = Context.getInstance().getAI2();
-	
-    	if(a2 == "Passive")
-    		return new PassiveAI(utt);
-    	else if(a2 == "Worker Rush")
-    		return new WorkerRush(utt);
-    	else if(a2 == "Light Rush")
-    		return new LightRush(utt);
-    	else if(a2 == "Ranged Rush")
-    		return new RangedRush(utt);
-    	else if(a2 == "Heavy Rush")
-    		return new HeavyRush(utt);
-    	else if(a2 == "Chromosome")
-    		return new Script_Template(utt);
+    //atualiza a IA de acordo com seu ID e nome pela interface
+    public static AI attAI(UnitTypeTable utt, int id) {
+    	if(id == 1) {
+	    	String a1 = Context.getInstance().getAI1();
+	    	if(a1 == "Passive")
+	    		return new PassiveAI(utt);
+	    	else if(a1 == "Worker Rush")
+	    		return new WorkerRush(utt);
+	    	else if(a1 == "Light Rush")
+	    		return new LightRush(utt);
+	    	else if(a1 == "Ranged Rush")
+	    		return new RangedRush(utt);
+	    	else if(a1 == "Heavy Rush")
+	    		return new HeavyRush(utt);
+	    	else if(a1 == "Chromosome")
+	    		return new Script_Template(utt);
+	    	return new PassiveAI();
+    	}
+    	
+    	if(id == 2) {
+    		String a2 = Context.getInstance().getAI2();
+	    	if(a2 == "Passive")
+	    		return new PassiveAI(utt);
+	    	else if(a2 == "Worker Rush")
+	    		return new WorkerRush(utt);
+	    	else if(a2 == "Light Rush")
+	    		return new LightRush(utt);
+	    	else if(a2 == "Ranged Rush")
+	    		return new RangedRush(utt);
+	    	else if(a2 == "Heavy Rush")
+	    		return new HeavyRush(utt);
+	    	else if(a2 == "Chromosome")
+	    		return new Script_Template(utt);
+	    	return new PassiveAI();
+    	}
     	
     	return new PassiveAI();
-    }
-/*    
-    public static AI attAi2(UnitTypeTable utt) {
-    	String a;
-    	ArrayList<Integer> iScriptsAi = new ArrayList<>(Context.getInstance().getScritpsAi2());
-    	a = Context.getInstance().getAI2();
-    	
-    	//System.out.println("Scripts aplicados 2:");
-    	//System.out.println(iScriptsAi);
-	
-    	if(a == "Passive")
-    		return new PassiveAI(utt);
-    	else if(a == "Worker Rush")
-    		return new WorkerRush(utt);
-    	else if(a == "Light Rush")
-    		return new LightRush(utt);
-    	else if(a == "Ranged Rush")
-    		return new RangedRush(utt);
-    	else if(a == "Heavy Rush")
-    		return new HeavyRush(utt);
-    	else if(a == "A3N")
-    		return new Script_Template(utt);			
-										
-    	return new PassiveAI();
-    }*/
-    
-    
-    public static void teste() {
-        if(Context.getInstance().getClickWorker()) {
-        	System.out.println("Clicou em WORKER!");
-        	Context.getInstance().setClickWorker(false);
-        }
-        if(Context.getInstance().getClickLight()) {
-        	System.out.println("Clicou em LIGHT!");
-        	Context.getInstance().setClickLight(false);
-        }
-        if(Context.getInstance().getClickHeavy()) {
-        	System.out.println("Clicou em HEAVY!");
-        	Context.getInstance().setClickHeavy(false);
-        }
-        if(Context.getInstance().getClickRanged()) {
-        	System.out.println("Clicou em RANGED!");
-        	Context.getInstance().setClickRanged(false);
-        }
-        if(Context.getInstance().getClickBarrack()) {
-        	System.out.println("Clicou em BARRACKS!");
-        	Context.getInstance().setClickBarrack(false);
-        }
     }
 
 

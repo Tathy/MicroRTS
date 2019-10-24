@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
@@ -20,9 +21,12 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXComboBox;
 
+import ai.ScriptsGenerator.GPCompiler.ICompiler;
+import ai.ScriptsGenerator.GPCompiler.MainGPCompiler;
 import gui.custom.NumberTextField;
 import model.Context;
 import model.MapPath;
+import rts.units.UnitTypeTable;
 import model.IdScripts;
 public class VisualScriptInterfaceController implements Initializable {
 	
@@ -35,6 +39,8 @@ public class VisualScriptInterfaceController implements Initializable {
     private List<MapPath> maps = new ArrayList<>();
     private ObservableList<MapPath> obsMaps;
     private List<IdScripts> scripts = new ArrayList<>();
+    
+    ICompiler compiler = new MainGPCompiler();
     
     @FXML
     private ComboBox<String> cbAI1;
@@ -83,8 +89,6 @@ public class VisualScriptInterfaceController implements Initializable {
     @FXML
     private TextField txtQuantBarracks1;
     @FXML
-    private TextField txtAttackWorkers1;
-    @FXML
     private TextField txtQuantWorkers2;
     @FXML
     private TextField txtHarvestWorkers2;
@@ -93,8 +97,6 @@ public class VisualScriptInterfaceController implements Initializable {
     @FXML
     private TextField txtQuantBarracks2;
     @FXML
-    private TextField txtAttackWorkers2;
-    @FXML
     private ComboBox<String> cbWorkerTarget1;
     @FXML
     private ComboBox<String> cbWorkerTarget2;
@@ -102,16 +104,20 @@ public class VisualScriptInterfaceController implements Initializable {
     private ComboBox<String> cbWorkerDir1;
     @FXML
     private ComboBox<String> cbWorkerDir2;
+    @FXML
+    private CheckBox cbAttackWorker1;
+    @FXML
+    private CheckBox cbAttackWorker2;
     
     // Aba Light
     @FXML
     private TextField txtQuantLight1;
     @FXML
-    private TextField txtAttackLight1;
-    @FXML
     private TextField txtQuantLight2;
     @FXML
-    private TextField txtAttackLight2;
+    private CheckBox cbAttackLight1;
+    @FXML
+    private CheckBox cbAttackLight2;
     @FXML
     private ComboBox<String> cbLightTarget1;
     @FXML
@@ -125,11 +131,11 @@ public class VisualScriptInterfaceController implements Initializable {
     @FXML
     private TextField txtQuantHeavy1;
     @FXML
-    private TextField txtAttackHeavy1;
-    @FXML
     private TextField txtQuantHeavy2;
     @FXML
-    private TextField txtAttackHeavy2;
+    private CheckBox cbAttackHeavy1;
+    @FXML
+    private CheckBox cbAttackHeavy2;
     @FXML
     private ComboBox<String> cbHeavyTarget1;
     @FXML
@@ -143,11 +149,11 @@ public class VisualScriptInterfaceController implements Initializable {
     @FXML
     private TextField txtQuantRanged1;
     @FXML
-    private TextField txtAttackRanged1;
-    @FXML
     private TextField txtQuantRanged2;
     @FXML
-    private TextField txtAttackRanged2;
+    private CheckBox cbAttackRanged1;
+    @FXML
+    private CheckBox cbAttackRanged2;
     @FXML
     private ComboBox<String> cbRangedTarget1;
     @FXML
@@ -188,35 +194,35 @@ public class VisualScriptInterfaceController implements Initializable {
     	
     	Context.getInstance().clearScriptsAI1();
     	Context.getInstance().clearScriptsAI2();
-    	
+    	/*
     	// ----- Aba Workers ------
     	// --- IA 1 ---
     	
-    	if( txtQuantWorkers1.getText() != null && Integer.parseInt(txtQuantWorkers1.getText()) != 0 ) {					//quantidade de workers
+    	if( txtQuantWorkers1.getText() != null && Integer.parseInt(txtQuantWorkers1.getText()) != 0 ) {				//cria workers
     		int q = Integer.parseInt(txtQuantWorkers1.getText());
     		String i = "train(Worker," + Integer.toString(q) + "," + "EnemyDir" + ")";
     		Context.getInstance().addScriptAI1(i);
     	}
-    	
-    	if( txtQuantBases1.getText() != null && Integer.parseInt(txtQuantBases1.getText()) != 0 ) {						//quantidade de bases
+    
+    	if( txtQuantBases1.getText() != null && Integer.parseInt(txtQuantBases1.getText()) != 0 ) {					//constroi bases
     		int q = Integer.parseInt(txtQuantBases1.getText());
     		String i = "build(Base," + Integer.toString(q) + ")";
     		Context.getInstance().addScriptAI1(i);
     	}
     	
-    	if( txtQuantBarracks1.getText() != null && Integer.parseInt(txtQuantBarracks1.getText()) != 0 ) {				//quantidade de barracks
+    	if( txtQuantBarracks1.getText() != null && Integer.parseInt(txtQuantBarracks1.getText()) != 0 ) {			//constroi barracks
     		int q = Integer.parseInt(txtQuantBarracks1.getText());
     		String i = "build(Barrack," + Integer.toString(q) + ")";
     		Context.getInstance().addScriptAI1(i);
     	}
     	
-    	if( txtAttackWorkers1.getText() != null && Integer.parseInt(txtAttackWorkers1.getText()) != 0 ) {				//quantidade de workers atacando
+    	if( cbAttackWorker1.isSelected()) { 																		//ataque de workers
     		//int q = Integer.parseInt(txtAttackWorkers1.getText());
     		String i = "attack(Worker," + cbWorkerDir1.getValue() + "," + cbWorkerTarget1.getValue() + ")";
     		Context.getInstance().addScriptAI1(i);
     	}
     	
-    	if( txtHarvestWorkers1.getText() != null && Integer.parseInt(txtHarvestWorkers1.getText()) != 0 ) {				//quantidade de workers coletando
+    	if( txtHarvestWorkers1.getText() != null && Integer.parseInt(txtHarvestWorkers1.getText()) != 0 ) {			//workers coletando
     		int q = Integer.parseInt(txtHarvestWorkers1.getText());
     		String i = "harvest(" + Integer.toString(q) + ")";
     		Context.getInstance().addScriptAI1(i);
@@ -224,31 +230,30 @@ public class VisualScriptInterfaceController implements Initializable {
     	
     	// --- IA 2 ---
     	
-    	if( txtQuantWorkers2.getText() != null && Integer.parseInt(txtQuantWorkers2.getText()) != 0 ) {					//quantidade de workers
+    	if( txtQuantWorkers2.getText() != null && Integer.parseInt(txtQuantWorkers2.getText()) != 0 ) {				//cria workers
     		int q = Integer.parseInt(txtQuantWorkers2.getText());
     		String i = "train(Worker," + Integer.toString(q) + "," + "EnemyDir" + ")";
     		Context.getInstance().addScriptAI2(i);
     	}
     	
-    	if( txtQuantBases2.getText() != null && Integer.parseInt(txtQuantBases2.getText()) != 0 ) {						//quantidade de bases
+    	if( txtQuantBases2.getText() != null && Integer.parseInt(txtQuantBases2.getText()) != 0 ) {					//constroi bases
     		int q = Integer.parseInt(txtQuantBases2.getText());
     		String i = "build(Base," + Integer.toString(q) + ")";
     		Context.getInstance().addScriptAI2(i);
     	}
     	
-    	if( txtQuantBarracks2.getText() != null && Integer.parseInt(txtQuantBarracks2.getText()) != 0 ) {				//quantidade de barracks
+    	if( txtQuantBarracks2.getText() != null && Integer.parseInt(txtQuantBarracks2.getText()) != 0 ) {			//constroi barracks
     		int q = Integer.parseInt(txtQuantBarracks2.getText());	
     		String i = "build(Barrack," + Integer.toString(q) + ")";
     		Context.getInstance().addScriptAI2(i);
     	}
     	
-    	if( txtAttackWorkers2.getText() != null && Integer.parseInt(txtAttackWorkers2.getText()) != 0 ) {				//quantidade de workers atacando
-    		//int q = Integer.parseInt(txtAttackWorkers2.getText());	
+    	if( cbAttackWorker1.isSelected() ) {																		//ataque de workers
     		String i = "attack(Worker," + cbWorkerDir2.getValue() + "," + cbWorkerTarget2.getValue() + ")";
     		Context.getInstance().addScriptAI2(i);
     	}
     	
-    	if( txtHarvestWorkers2.getText() != null && Integer.parseInt(txtHarvestWorkers2.getText()) != 0 ) {				//quantidade de workers coletando
+    	if( txtHarvestWorkers2.getText() != null && Integer.parseInt(txtHarvestWorkers2.getText()) != 0 ) {			//workers coletando
     		int q = Integer.parseInt(txtHarvestWorkers2.getText());
     		String i = "harvest(" + Integer.toString(q) + ")";
     		Context.getInstance().addScriptAI2(i);
@@ -256,14 +261,14 @@ public class VisualScriptInterfaceController implements Initializable {
     	
     	// ----- Aba Light ------
     	// --- IA 1 ---
-    	
-    	if( txtQuantLight1.getText() != null && Integer.parseInt(txtQuantLight1.getText()) != 0 ) {					//quantidade de workers
+    
+    	if( txtQuantLight1.getText() != null && Integer.parseInt(txtQuantLight1.getText()) != 0 ) {					//cria light units
     		int q = Integer.parseInt(txtQuantLight1.getText());
     		String i = "train(Light," + Integer.toString(q) + "," + "EnemyDir" + ")";
     		Context.getInstance().addScriptAI1(i);
     	}
    	
-    	if( txtAttackLight1.getText() != null && Integer.parseInt(txtAttackLight1.getText()) != 0 ) {				//quantidade de workers atacando
+    	if( cbAttackLight1.isSelected() ) {																			//ataque de light units
     		//int q = Integer.parseInt(txtAttackWorkers2.getText());	
     		String i = "attack(Light," + cbLightDir1.getValue() + "," + cbLightTarget1.getValue() + ")";
     		Context.getInstance().addScriptAI1(i);
@@ -271,13 +276,13 @@ public class VisualScriptInterfaceController implements Initializable {
   	
     	// --- IA 2 ---
     	
-    	if( txtQuantLight2.getText() != null && Integer.parseInt(txtQuantLight2.getText()) != 0 ) {					//quantidade de workers
+    	if( txtQuantLight2.getText() != null && Integer.parseInt(txtQuantLight2.getText()) != 0 ) {					//cria light units
     		int q = Integer.parseInt(txtQuantLight2.getText());
     		String i = "train(Light," + Integer.toString(q) + "," + "EnemyDir" + ")";
     		Context.getInstance().addScriptAI2(i);
     	}
    	
-    	if( txtAttackLight2.getText() != null && Integer.parseInt(txtAttackLight2.getText()) != 0 ) {				//quantidade de workers atacando
+    	if( cbAttackLight2.isSelected() ) {																			//ataque de light units
     		//int q = Integer.parseInt(txtAttackWorkers2.getText());	
     		String i = "attack(Light," + cbLightDir2.getValue() + "," + cbLightTarget2.getValue() + ")";
     		Context.getInstance().addScriptAI2(i);
@@ -286,13 +291,13 @@ public class VisualScriptInterfaceController implements Initializable {
     	// ----- Aba Heavy ------
     	// --- IA 1 ---
     	
-    	if( txtQuantHeavy1.getText() != null && Integer.parseInt(txtQuantHeavy1.getText()) != 0 ) {					//quantidade de workers
+    	if( txtQuantHeavy1.getText() != null && Integer.parseInt(txtQuantHeavy1.getText()) != 0 ) {					//cria heavy units
     		int q = Integer.parseInt(txtQuantHeavy1.getText());
     		String i = "train(Heavy," + Integer.toString(q) + "," + "EnemyDir" + ")";
     		Context.getInstance().addScriptAI1(i);
     	}
    	
-    	if( txtAttackHeavy1.getText() != null && Integer.parseInt(txtAttackHeavy1.getText()) != 0 ) {				//quantidade de workers atacando
+    	if( cbAttackHeavy1.isSelected() ) {																			//ataque de heavy units
     		//int q = Integer.parseInt(txtAttackWorkers2.getText());	
     		String i = "attack(Heavy," + cbHeavyDir1.getValue() + "," + cbHeavyTarget1.getValue() + ")";
     		Context.getInstance().addScriptAI1(i);
@@ -300,13 +305,13 @@ public class VisualScriptInterfaceController implements Initializable {
   	
     	// --- IA 2 ---
     	
-    	if( txtQuantHeavy2.getText() != null && Integer.parseInt(txtQuantHeavy2.getText()) != 0 ) {					//quantidade de workers
+    	if( txtQuantHeavy2.getText() != null && Integer.parseInt(txtQuantHeavy2.getText()) != 0 ) {					//cria heavy units
     		int q = Integer.parseInt(txtQuantHeavy2.getText());
     		String i = "train(Heavy," + Integer.toString(q) + "," + "EnemyDir" + ")";
     		Context.getInstance().addScriptAI2(i);
     	}
    	
-    	if( txtAttackHeavy2.getText() != null && Integer.parseInt(txtAttackHeavy2.getText()) != 0 ) {				//quantidade de workers atacando
+    	if( cbAttackHeavy2.isSelected() ) {																			//ataque de heavy units
     		//int q = Integer.parseInt(txtAttackWorkers2.getText());	
     		String i = "attack(Heavy," + cbHeavyDir2.getValue() + "," + cbHeavyTarget2.getValue() + ")";
     		Context.getInstance().addScriptAI2(i);
@@ -315,13 +320,13 @@ public class VisualScriptInterfaceController implements Initializable {
     	// ----- Aba Ranged ------
     	// --- IA 1 ---
     	
-    	if( txtQuantRanged1.getText() != null && Integer.parseInt(txtQuantRanged1.getText()) != 0 ) {					//quantidade de workers
+    	if( txtQuantRanged1.getText() != null && Integer.parseInt(txtQuantRanged1.getText()) != 0 ) {				//cria ranged units
     		int q = Integer.parseInt(txtQuantRanged1.getText());
     		String i = "train(Ranged," + Integer.toString(q) + "," + "EnemyDir" + ")";
     		Context.getInstance().addScriptAI1(i);
     	}
    	
-    	if( txtAttackRanged1.getText() != null && Integer.parseInt(txtAttackRanged1.getText()) != 0 ) {				//quantidade de workers atacando
+    	if( cbAttackRanged1.isSelected() ) {																		//ataque de ranged units
     		//int q = Integer.parseInt(txtAttackWorkers2.getText());	
     		String i = "attack(Ranged," + cbRangedDir1.getValue() + "," + cbRangedTarget1.getValue() + ")";
     		Context.getInstance().addScriptAI1(i);
@@ -329,54 +334,39 @@ public class VisualScriptInterfaceController implements Initializable {
   	
     	// --- IA 2 ---
     	
-    	if( txtQuantRanged2.getText() != null && Integer.parseInt(txtQuantRanged2.getText()) != 0 ) {					//quantidade de workers
+    	if( txtQuantRanged2.getText() != null && Integer.parseInt(txtQuantRanged2.getText()) != 0 ) {				//cria ranged units
     		int q = Integer.parseInt(txtQuantRanged2.getText());
     		String i = "train(Ranged," + Integer.toString(q) + "," + "EnemyDir" + ")";
     		Context.getInstance().addScriptAI2(i);
     	}
    	
-    	if( txtAttackRanged2.getText() != null && Integer.parseInt(txtAttackRanged2.getText()) != 0 ) {				//quantidade de workers atacando
+    	if( cbAttackRanged2.isSelected() ) {																		//ataque de ranged units
     		//int q = Integer.parseInt(txtAttackWorkers2.getText());	
     		String i = "attack(Ranged," + cbRangedDir2.getValue() + "," + cbRangedTarget2.getValue() + ")";
     		Context.getInstance().addScriptAI2(i);
     	}
+    	*/
+    	Context.getInstance().addScriptAI1("attack(Worker,closest,EnemyDir)");
+    	
+    	System.out.println("Scripts AI1:");
+    	for(int i = 0; i < (Context.getInstance().getScritpsAi1()).size(); i++ ) {
+    		UnitTypeTable utt = new UnitTypeTable();
+    		Context.getInstance().getCommandsGP1().addAll(compiler.CompilerCode( (Context.getInstance().getScritpsAi1()).get(i) , utt));
+    		System.out.println((Context.getInstance().getScritpsAi1()).get(i));
+    	}
+    	
+    	System.out.println("Scripts AI2:");
+    	for(int i = 0; i < (Context.getInstance().getScritpsAi2()).size(); i++ ) {
+    		UnitTypeTable utt = new UnitTypeTable();
+    		Context.getInstance().getCommandsGP2().addAll(compiler.CompilerCode( (Context.getInstance().getScritpsAi2()).get(i) , utt));
+    		System.out.println((Context.getInstance().getScritpsAi2()).get(i));
+    	}
+    	System.out.println();
 
-    	//Log
-    	//System.out.println("Log do Apply:");
-    	//System.out.println(cbMaps.getValue());
-    	//System.out.println(cbAI1.getValue());
-    	//System.out.println(cbAI2.getValue());
-    }
-
-    
-    
-    // ------------ TESTES ------------------
-    
-    @FXML
-    void clickedBtnWorker(ActionEvent event) {
-    	Context.getInstance().setClickWorker(true);
-    }
-    
-    @FXML
-    void clickedBtnLight(ActionEvent event) {
-    	Context.getInstance().setClickLight(true);
-    }
-    
-    @FXML
-    void clickedBtnHeavy(ActionEvent event) {
-    	Context.getInstance().setClickHeavy(true);
-    }
-    
-    @FXML
-    void clickedBtnRanged(ActionEvent event) {
-    	Context.getInstance().setClickRanged(true);
-    }
-    
-    @FXML
-    void clickedBtnBarrack(ActionEvent event) {
-    	Context.getInstance().setClickBarrack(true);
     }
 
+    
+    // Inicialização da interface
 	public void initialize(URL location, ResourceBundle resources) {
 		loadMaps();
 		loadAIs();
@@ -459,6 +449,17 @@ public class VisualScriptInterfaceController implements Initializable {
 		cbHeavyTarget2.setItems(obsTargets);
 		cbRangedTarget1.setItems(obsTargets);
 		cbRangedTarget2.setItems(obsTargets);
+		
+		//valores iniciais
+		cbWorkerTarget1.setValue(t1);
+		cbWorkerTarget2.setValue(t1);
+		cbLightTarget1.setValue(t1);
+		cbLightTarget2.setValue(t1);
+		cbHeavyTarget1.setValue(t1);
+		cbHeavyTarget2.setValue(t1);
+		cbRangedTarget1.setValue(t1);
+		cbRangedTarget2.setValue(t1);
+		
 	}
 	
 	public void loadDirections() {
@@ -483,6 +484,16 @@ public class VisualScriptInterfaceController implements Initializable {
 		cbHeavyDir2.setItems(obsDirections);
 		cbRangedDir1.setItems(obsDirections);
 		cbRangedDir2.setItems(obsDirections);
+		
+		//valores iniciais
+		cbWorkerDir1.setValue(d1);
+		cbWorkerDir2.setValue(d1);
+		cbLightDir1.setValue(d1);
+		cbLightDir2.setValue(d1);
+		cbHeavyDir1.setValue(d1);
+		cbHeavyDir2.setValue(d1);
+		cbRangedDir1.setValue(d1);
+		cbRangedDir2.setValue(d1);
 	}
 	
 	

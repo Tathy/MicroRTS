@@ -12,6 +12,7 @@ import ai.ScriptsGenerator.GPCompiler.MainGPCompiler;
 import ai.abstraction.AbstractionLayerAI;
 import ai.abstraction.pathfinding.AStarPathFinding;
 import ai.abstraction.pathfinding.PathFinding;
+import ai.asymmetric.PGS.LightPGSSCriptChoiceNoWaits;
 import ai.core.AI;
 import ai.core.ParameterSpecification;
 import model.Context;
@@ -81,26 +82,65 @@ public class Script_Template extends AbstractionLayerAI {
 
     public AI build(int player, GameState gs) {
     	List<ICommand> commandsGP = new ArrayList<>();
+    	//AI script = new ChromosomeAI(utt, null, "", "", usedCommands);
+    	
+    	//Teste
+    	//List<String> comandos = new ArrayList<>();
+    	//comandos = Context.getInstance().getScritpsAi1();
+    	//System.out.println("teste");
+    	
     	if(player == 0) {
-    		//commandsGP.addAll(compiler.CompilerCode("build(Barrack,1)", utt));
+    		//commandsGP.addAll(compiler.CompilerCode("build(Base,1)", utt));
         	//commandsGP.addAll(compiler.CompilerCode("harvest(1)", utt));
         	//commandsGP.addAll(compiler.CompilerCode("train(Light,20,EnemyDir)", utt));
-        	//commandsGP.addAll(compiler.CompilerCode("attack(Light,closest,EnemyDir)", utt));
+        	//commandsGP.addAll(compiler.CompilerCode("attack(Worker,closest,EnemyDir)", utt));
+        		//script = new ChromosomeAI(utt, commandsGP, "", "", usedCommands);
     		for(int i = 0; i < (Context.getInstance().getScritpsAi1()).size(); i++ ) {
+    			System.out.println((Context.getInstance().getScritpsAi1()).get(i));
     			commandsGP.addAll(compiler.CompilerCode( (Context.getInstance().getScritpsAi1()).get(i) , utt));
     		}
+    		
+    		//nova versão
+    		//commandsGP = Context.getInstance().getCommandsGP1();
+    		//script = new ChromosomeAI(utt, Context.getInstance().getCommandsGP1(), "", "", usedCommands);
+    		
+    		//comandos.clear();
+    		//comandos.add("build(Barrack,1)");
+    		//comandos.add("harvest(1)");
+    		//comandos.add("train(Worker,2,EnemyDir)");
+    		//comandos.add("attack(Worker,closest,EnemyDir)");
+        	//for(int i = 0; i < comandos.size(); i++) {
+        	//	commandsGP.addAll(compiler.CompilerCode( comandos.get(i) , utt));
+        	//}
+        	//script = new ChromosomeAI(utt, commandsGP, "", "", usedCommands);
+    		
     	} else {
-	    	//commandsGP.addAll(compiler.CompilerCode("build(Barrack,1)", utt));
+	    	//commandsGP.addAll(compiler.CompilerCode("build(Base,1)", utt));
 	    	//commandsGP.addAll(compiler.CompilerCode("harvest(1)", utt));
 	    	//commandsGP.addAll(compiler.CompilerCode("train(Ranged,20,EnemyDir)", utt));
-	    	//commandsGP.addAll(compiler.CompilerCode("attack(Ranged,closest,EnemyDir)", utt));
-    		for(int i = 0; i < (Context.getInstance().getScritpsAi2()).size(); i++ ) {
-    			commandsGP.addAll(compiler.CompilerCode( (Context.getInstance().getScritpsAi2()).get(i) , utt));
-    		}
+    		//commandsGP.addAll(compiler.CompilerCode("attack(Worker,closest,EnemyDir)", utt));
+    		//for(int i = 0; i < (Context.getInstance().getScritpsAi2()).size(); i++ ) {
+    		//	commandsGP.addAll(compiler.CompilerCode( (Context.getInstance().getScritpsAi2()).get(i) , utt));
+    		//}
+    		
+    		//nova versão
+    		//commandsGP = Context.getInstance().getCommandsGP2();
+    		//script = new ChromosomeAI(utt, Context.getInstance().getCommandsGP2(), "", "", usedCommands);
+    		
+    		//System.out.println();
     	}
     	
-    	AI script = new ChromosomeAI(utt, commandsGP, "", "", usedCommands);
+    	/////////////////////////
+    	//	testar criar array de string no IA 1 e preencher com for
+    	//    	caso dê certo, testar com arrays vindas da interface
+    	//////////////////////////////////////
     	
+    	AI script = new ChromosomeAI(utt, commandsGP, "", "", usedCommands);
+    	//script = new ChromosomeAI(utt, commandsGP, "", "", usedCommands);
+    	//System.out.println(script.toString());
+    	//ArrayList teste = new ArrayList<AI>();
+    	//teste.add(script);
+    	//LightPGSSCriptChoiceNoWaits pgs = new LightPGSSCriptChoiceNoWaits(utt,teste ,200,  "Tahthy");
     	
     	return script;
     }
