@@ -19,18 +19,15 @@ public class Context {
 	private boolean restart = true;
 	private boolean play = false;
 	private boolean apply = false;
+	private boolean applyScripts = false;
 	
 	// Map
 	private String map = "maps/24x24/basesWorkers24x24A.xml";
 	//AIs
 	private String ai1 = "Passive";
 	private String ai2 = "Passive";
-	//ArrayList<Integer> iScriptsAi1 = new ArrayList<>();
-    //ArrayList<Integer> iScriptsAi2 = new ArrayList<>();
 	ArrayList<String> scriptsAi1 = new ArrayList<>();
 	ArrayList<String> scriptsAi2 = new ArrayList<>();
-	List<ICommand> commandsGP1 = new ArrayList<>();
-	List<ICommand> commandsGP2 = new ArrayList<>();
 	
 	//public static Context getInstance() {
 	//    return uniqueInstance;
@@ -75,6 +72,14 @@ public class Context {
 	
 	public boolean isPlayClicked() {
 		return play;
+	}
+	
+	public void setApplyScripts(boolean op) {
+		applyScripts = op;
+	}
+	
+	public boolean isAppliedScripts() {
+		return applyScripts;
 	}
 
 	// Telinha Main
@@ -128,14 +133,6 @@ public class Context {
 	
 	public ArrayList<String> getScritpsAi2(){
 		return scriptsAi2;
-	}
-
-	public List<ICommand> getCommandsGP2() {
-		return commandsGP2;
-	}
-	
-	public List<ICommand> getCommandsGP1() {
-		return commandsGP1;
 	}
 
 	
