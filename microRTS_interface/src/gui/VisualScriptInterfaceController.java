@@ -53,32 +53,7 @@ public class VisualScriptInterfaceController implements Initializable {
     private ObservableList<String> obsTargets;
     private List<String> directions = new ArrayList<>();
     private ObservableList<String> obsDirections;
-    
-    @FXML
-    private TextField txtAI1_00;
-    @FXML
-    private TextField txtAI1_10;
-    @FXML
-    private TextField txtAI1_01;
-    @FXML
-    private TextField txtAI1_11;
-    @FXML
-    private TextField txtAI1_02;
-    @FXML
-    private TextField txtAI1_12;
-    @FXML
-    private TextField txtAI2_00;
-    @FXML
-    private TextField txtAI2_10;
-    @FXML
-    private TextField txtAI2_01;
-    @FXML
-    private TextField txtAI2_11;
-    @FXML
-    private TextField txtAI2_02;
-    @FXML
-    private TextField txtAI2_12;
-    
+
     // Aba Workers
     @FXML
     private TextField txtQuantWorkers1;
@@ -108,6 +83,10 @@ public class VisualScriptInterfaceController implements Initializable {
     private CheckBox cbAttackWorker1;
     @FXML
     private CheckBox cbAttackWorker2;
+    @FXML
+    private ComboBox<String> cbWorkerTrainDir1;
+    @FXML
+    private ComboBox<String> cbWorkerTrainDir2;
     
     // Aba Light
     @FXML
@@ -126,6 +105,10 @@ public class VisualScriptInterfaceController implements Initializable {
     private ComboBox<String> cbLightDir1;
     @FXML
     private ComboBox<String> cbLightDir2;
+    @FXML
+    private ComboBox<String> cbLightTrainDir1;
+    @FXML
+    private ComboBox<String> cbLightTrainDir2;
     
     // Aba Heavy
     @FXML
@@ -144,6 +127,10 @@ public class VisualScriptInterfaceController implements Initializable {
     private ComboBox<String> cbHeavyDir1;
     @FXML
     private ComboBox<String> cbHeavyDir2;
+    @FXML
+    private ComboBox<String> cbHeavyTrainDir1;
+    @FXML
+    private ComboBox<String> cbHeavyTrainDir2;
     
     // Aba Ranged
     @FXML
@@ -162,6 +149,10 @@ public class VisualScriptInterfaceController implements Initializable {
     private ComboBox<String> cbRangedDir1;
     @FXML
     private ComboBox<String> cbRangedDir2;
+    @FXML
+    private ComboBox<String> cbRangedTrainDir1;
+    @FXML
+    private ComboBox<String> cbRangedTrainDir2;
     
     
     
@@ -200,7 +191,7 @@ public class VisualScriptInterfaceController implements Initializable {
     	
     	if( txtQuantWorkers1.getText() != null && Integer.parseInt(txtQuantWorkers1.getText()) != 0 ) {				//cria workers
     		int q = Integer.parseInt(txtQuantWorkers1.getText());
-    		String i = "train(Worker," + Integer.toString(q) + "," + "EnemyDir" + ")";
+    		String i = "train(Worker," + Integer.toString(q) + "," + cbWorkerTrainDir1.getValue() + ")";
     		Context.getInstance().addScriptAI1(i);
     	}
     
@@ -232,7 +223,7 @@ public class VisualScriptInterfaceController implements Initializable {
     	
     	if( txtQuantWorkers2.getText() != null && Integer.parseInt(txtQuantWorkers2.getText()) != 0 ) {				//cria workers
     		int q = Integer.parseInt(txtQuantWorkers2.getText());
-    		String i = "train(Worker," + Integer.toString(q) + "," + "EnemyDir" + ")";
+    		String i = "train(Worker," + Integer.toString(q) + "," + cbWorkerTrainDir2.getValue() + ")";
     		Context.getInstance().addScriptAI2(i);
     	}
     	
@@ -475,6 +466,14 @@ public class VisualScriptInterfaceController implements Initializable {
 		cbHeavyDir2.setItems(obsDirections);
 		cbRangedDir1.setItems(obsDirections);
 		cbRangedDir2.setItems(obsDirections);
+		cbWorkerTrainDir1.setItems(obsDirections);
+		cbWorkerTrainDir2.setItems(obsDirections);
+		cbLightTrainDir1.setItems(obsDirections);
+	    cbLightTrainDir2.setItems(obsDirections);
+	    cbHeavyTrainDir1.setItems(obsDirections);
+	    cbHeavyTrainDir2.setItems(obsDirections);
+	    cbRangedTrainDir1.setItems(obsDirections);
+	    cbRangedTrainDir2.setItems(obsDirections);
 		
 		//valores iniciais
 		cbWorkerDir1.setValue(d1);
@@ -485,6 +484,14 @@ public class VisualScriptInterfaceController implements Initializable {
 		cbHeavyDir2.setValue(d1);
 		cbRangedDir1.setValue(d1);
 		cbRangedDir2.setValue(d1);
+		cbWorkerTrainDir1.setValue(d1);
+		cbWorkerTrainDir2.setValue(d1);
+		cbLightTrainDir1.setValue(d1);
+	    cbLightTrainDir2.setValue(d1);
+	    cbHeavyTrainDir1.setValue(d1);
+	    cbHeavyTrainDir2.setValue(d1);
+	    cbRangedTrainDir1.setValue(d1);
+	    cbRangedTrainDir2.setValue(d1);
 	}
 	
 	

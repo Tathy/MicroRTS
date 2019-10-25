@@ -77,11 +77,15 @@
                                     <RowConstraints minHeight="10.0" percentHeight="7.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" percentHeight="4.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" percentHeight="7.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" percentHeight="4.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" percentHeight="7.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" percentHeight="7.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" percentHeight="4.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" percentHeight="7.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" percentHeight="2.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" percentHeight="5.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" percentHeight="4.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" percentHeight="7.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" percentHeight="4.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" percentHeight="7.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" percentHeight="4.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -123,33 +127,7 @@
                                           <Insets left="10.0" right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Bases" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                       <font>
-                                          <Font name="Ebrima Bold" size="13.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="5.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <TextField fx:id="txtQuantBases1" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="1" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" text="1" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                       <GridPane.margin>
-                                          <Insets left="5.0" right="10.0" />
-                                       </GridPane.margin>
-                                    </TextField>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Barracks" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                       <font>
-                                          <Font name="Ebrima Bold" size="13.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="5.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <TextField fx:id="txtQuantBarracks1" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="0" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" text="0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                                       <GridPane.margin>
-                                          <Insets left="5.0" right="10.0" />
-                                       </GridPane.margin>
-                                    </TextField>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" GridPane.rowIndex="10">
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Bases" GridPane.rowIndex="5">
                                        <font>
                                           <Font name="Ebrima Bold" size="13.0" />
                                        </font>
@@ -157,17 +135,43 @@
                                           <Insets left="10.0" />
                                        </GridPane.margin>
                                     </Text>
-                                    <TextField fx:id="txtQuantWorkers2" opacity="0.35" prefHeight="31.0" prefWidth="107.0" promptText="1" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" text="1" GridPane.rowIndex="11">
+                                    <TextField fx:id="txtQuantBases1" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="1" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" text="1" GridPane.rowIndex="6">
                                        <GridPane.margin>
                                           <Insets left="10.0" right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <Text fill="WHITE" opacity="0.6" strokeType="OUTSIDE" strokeWidth="0.0" text="AI 2" GridPane.rowIndex="9">
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Barracks" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="13.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="5.0" />
+                                       </GridPane.margin>
+                                    </Text>
+                                    <TextField fx:id="txtQuantBarracks1" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="0" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" text="0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" right="10.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" GridPane.rowIndex="12">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="13.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="10.0" />
+                                       </GridPane.margin>
+                                    </Text>
+                                    <TextField fx:id="txtQuantWorkers2" opacity="0.35" prefHeight="31.0" prefWidth="107.0" promptText="1" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" text="1" GridPane.rowIndex="13">
+                                       <GridPane.margin>
+                                          <Insets left="10.0" right="5.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Text fill="WHITE" opacity="0.6" strokeType="OUTSIDE" strokeWidth="0.0" text="AI 2" GridPane.rowIndex="11">
                                        <font>
                                           <Font name="Ebrima Bold" size="16.0" />
                                        </font>
                                     </Text>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Harvest" GridPane.rowIndex="12">
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Harvest" GridPane.rowIndex="14">
                                        <font>
                                           <Font name="Ebrima Bold" size="13.0" />
                                        </font>
@@ -175,50 +179,12 @@
                                           <Insets left="10.0" />
                                        </GridPane.margin>
                                     </Text>
-                                    <TextField fx:id="txtHarvestWorkers2" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="0" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" text="0" GridPane.rowIndex="13">
+                                    <TextField fx:id="txtHarvestWorkers2" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="0" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" text="0" GridPane.rowIndex="15">
                                        <GridPane.margin>
                                           <Insets left="10.0" right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Bases" GridPane.columnIndex="1" GridPane.rowIndex="10">
-                                       <font>
-                                          <Font name="Ebrima Bold" size="13.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="5.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <TextField fx:id="txtQuantBases2" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="1" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" text="1" GridPane.columnIndex="1" GridPane.rowIndex="11">
-                                       <GridPane.margin>
-                                          <Insets left="5.0" right="10.0" />
-                                       </GridPane.margin>
-                                    </TextField>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Barracks" GridPane.columnIndex="1" GridPane.rowIndex="12">
-                                       <font>
-                                          <Font name="Ebrima Bold" size="13.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="5.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <TextField fx:id="txtQuantBarracks2" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="0" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" text="0" GridPane.columnIndex="1" GridPane.rowIndex="13">
-                                       <GridPane.margin>
-                                          <Insets left="5.0" right="10.0" />
-                                       </GridPane.margin>
-                                    </TextField>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Direction" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                                       <font>
-                                          <Font name="Ebrima Bold" size="13.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="5.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <ComboBox id="scroll-cb" fx:id="cbWorkerDir1" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="EnemyDir" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" stylesheets="@CSS/main-screen.css" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                                       <GridPane.margin>
-                                          <Insets left="5.0" right="10.0" />
-                                       </GridPane.margin></ComboBox>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Target" GridPane.rowIndex="6">
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Bases" GridPane.rowIndex="16">
                                        <font>
                                           <Font name="Ebrima Bold" size="13.0" />
                                        </font>
@@ -226,11 +192,12 @@
                                           <Insets left="10.0" />
                                        </GridPane.margin>
                                     </Text>
-                                    <ComboBox id="scroll-cb" fx:id="cbWorkerTarget1" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="closest" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" stylesheets="@CSS/main-screen.css" GridPane.rowIndex="7">
+                                    <TextField fx:id="txtQuantBases2" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="1" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" text="1" GridPane.rowIndex="17">
                                        <GridPane.margin>
                                           <Insets left="10.0" right="5.0" />
-                                       </GridPane.margin></ComboBox>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Direction" GridPane.columnIndex="1" GridPane.rowIndex="15">
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Barracks" GridPane.columnIndex="1" GridPane.rowIndex="16">
                                        <font>
                                           <Font name="Ebrima Bold" size="13.0" />
                                        </font>
@@ -238,11 +205,48 @@
                                           <Insets left="5.0" />
                                        </GridPane.margin>
                                     </Text>
-                                    <ComboBox id="scroll-cb" fx:id="cbWorkerDir2" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="EnemyDir" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" stylesheets="@CSS/main-screen.css" GridPane.columnIndex="1" GridPane.rowIndex="16">
+                                    <TextField fx:id="txtQuantBarracks2" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="0" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" text="0" GridPane.columnIndex="1" GridPane.rowIndex="17">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" right="10.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Direction" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="13.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="5.0" />
+                                       </GridPane.margin>
+                                    </Text>
+                                    <ComboBox id="scroll-cb" fx:id="cbWorkerDir1" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="EnemyDir" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" stylesheets="@CSS/main-screen.css" GridPane.columnIndex="1" GridPane.rowIndex="9">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="10.0" />
                                        </GridPane.margin></ComboBox>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Target" GridPane.rowIndex="15">
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Target" GridPane.rowIndex="8">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="13.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="10.0" />
+                                       </GridPane.margin>
+                                    </Text>
+                                    <ComboBox id="scroll-cb" fx:id="cbWorkerTarget1" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="closest" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" stylesheets="@CSS/main-screen.css" GridPane.rowIndex="9">
+                                       <GridPane.margin>
+                                          <Insets left="10.0" right="5.0" />
+                                       </GridPane.margin></ComboBox>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Direction" GridPane.columnIndex="1" GridPane.rowIndex="19">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="13.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="5.0" />
+                                       </GridPane.margin>
+                                    </Text>
+                                    <ComboBox id="scroll-cb" fx:id="cbWorkerDir2" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="EnemyDir" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" stylesheets="@CSS/main-screen.css" GridPane.columnIndex="1" GridPane.rowIndex="20">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" right="10.0" />
+                                       </GridPane.margin></ComboBox>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Target" GridPane.rowIndex="19">
                                        <font>
                                           <Font name="Ebrima Bold" size="13.0" />
                                        </font>
@@ -250,11 +254,11 @@
                                           <Insets left="10.0" right="5.0" />
                                        </GridPane.margin>
                                     </Text>
-                                    <ComboBox id="scroll-cb" fx:id="cbWorkerTarget2" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="closest" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" stylesheets="@CSS/main-screen.css" GridPane.rowIndex="16">
+                                    <ComboBox id="scroll-cb" fx:id="cbWorkerTarget2" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="closest" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" stylesheets="@CSS/main-screen.css" GridPane.rowIndex="20">
                                        <GridPane.margin>
                                           <Insets left="10.0" right="5.0" />
                                        </GridPane.margin></ComboBox>
-                                    <JFXCheckBox fx:id="cbAttackWorker1" checkedColor="#313251" text="Attack" textFill="WHITE" unCheckedColor="#ffffff4d" GridPane.rowIndex="5">
+                                    <JFXCheckBox fx:id="cbAttackWorker1" checkedColor="#313251" text="Attack" textFill="WHITE" unCheckedColor="#ffffff4d" GridPane.rowIndex="7">
                                        <font>
                                           <Font name="Ebrima Bold" size="13.0" />
                                        </font>
@@ -262,7 +266,7 @@
                                           <Insets left="10.0" />
                                        </GridPane.margin>
                                     </JFXCheckBox>
-                                    <JFXCheckBox fx:id="cbAttackWorker2" checkedColor="#313251" text="Attack" textFill="WHITE" unCheckedColor="#ffffff4d" GridPane.rowIndex="14">
+                                    <JFXCheckBox fx:id="cbAttackWorker2" checkedColor="#313251" text="Attack" textFill="WHITE" unCheckedColor="#ffffff4d" GridPane.rowIndex="18">
                                        <font>
                                           <Font name="Ebrima Bold" size="13.0" />
                                        </font>
@@ -270,6 +274,32 @@
                                           <Insets left="10.0" />
                                        </GridPane.margin>
                                     </JFXCheckBox>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Train Direction" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="13.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="5.0" />
+                                       </GridPane.margin>
+                                    </Text>
+                                    <ComboBox id="scroll-cb" fx:id="cbWorkerTrainDir1" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="EnemyDir" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" stylesheets="@CSS/main-screen.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" right="10.0" />
+                                       </GridPane.margin>
+                                    </ComboBox>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Train Direction" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="13.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="5.0" />
+                                       </GridPane.margin>
+                                    </Text>
+                                    <ComboBox id="scroll-cb" fx:id="cbWorkerTrainDir2" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="EnemyDir" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" stylesheets="@CSS/main-screen.css" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" right="10.0" />
+                                       </GridPane.margin>
+                                    </ComboBox>
                                  </children>
                               </GridPane>
                            </children></AnchorPane>
@@ -410,6 +440,32 @@
                                           <Insets left="10.0" />
                                        </GridPane.margin>
                                     </JFXCheckBox>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Train Direction" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="13.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="5.0" />
+                                       </GridPane.margin>
+                                    </Text>
+                                    <ComboBox id="scroll-cb" fx:id="cbLightTrainDir1" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="EnemyDir" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" stylesheets="@CSS/main-screen.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" right="10.0" />
+                                       </GridPane.margin>
+                                    </ComboBox>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Train Direction" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="13.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="5.0" />
+                                       </GridPane.margin>
+                                    </Text>
+                                    <ComboBox id="scroll-cb" fx:id="cbLightTrainDir2" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="EnemyDir" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" stylesheets="@CSS/main-screen.css" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" right="10.0" />
+                                       </GridPane.margin>
+                                    </ComboBox>
                                  </children>
                               </GridPane>
                            </children></AnchorPane>
@@ -550,6 +606,32 @@
                                           <Insets left="10.0" />
                                        </GridPane.margin>
                                     </JFXCheckBox>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Train Direction" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="13.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="5.0" />
+                                       </GridPane.margin>
+                                    </Text>
+                                    <ComboBox id="scroll-cb" fx:id="cbHeavyTrainDir1" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="EnemyDir" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" stylesheets="@CSS/main-screen.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" right="10.0" />
+                                       </GridPane.margin>
+                                    </ComboBox>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Train Direction" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="13.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="5.0" />
+                                       </GridPane.margin>
+                                    </Text>
+                                    <ComboBox id="scroll-cb" fx:id="cbHeavyTrainDir2" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="EnemyDir" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" stylesheets="@CSS/main-screen.css" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" right="10.0" />
+                                       </GridPane.margin>
+                                    </ComboBox>
                                  </children>
                               </GridPane>
                            </children></AnchorPane>
@@ -559,7 +641,7 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <GridPane prefWidth="239.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                              <GridPane prefWidth="239.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -690,6 +772,32 @@
                                           <Insets left="10.0" />
                                        </GridPane.margin>
                                     </JFXCheckBox>
+                                    <ComboBox id="scroll-cb" fx:id="cbRangedTrainDir2" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="EnemyDir" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" stylesheets="@CSS/main-screen.css" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" right="10.0" />
+                                       </GridPane.margin>
+                                    </ComboBox>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Train Direction" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="13.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="5.0" />
+                                       </GridPane.margin>
+                                    </Text>
+                                    <ComboBox id="scroll-cb" fx:id="cbRangedTrainDir1" opacity="0.35" prefHeight="31.0" prefWidth="219.0" promptText="EnemyDir" style="-fx-background-color: WHITE; -fx-background-radius: 50px;" stylesheets="@CSS/main-screen.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" right="10.0" />
+                                       </GridPane.margin>
+                                    </ComboBox>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Train Direction" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="13.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="5.0" />
+                                       </GridPane.margin>
+                                    </Text>
                                  </children>
                               </GridPane>
                            </children></AnchorPane>
